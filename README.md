@@ -1,2 +1,2 @@
 # LearningCsharp   
-program1 - int, char, array, perator
+program1 - int, char, array, operator
