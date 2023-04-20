@@ -84,8 +84,8 @@ namespace TestCSharp
         {
             Animal dog = new Dog();
             Animal pig = new Pig();
-            Animal cat = new Cat();
-            Cat cat2 = new Cat(); // cat이랑 무슨 차이??
+            Animal cat = new Cat(); // 업캐스팅, 부모인 Animal의 기능은 사용 가능하지만 Cat의 기능은 사용 불가
+            Cat cat2 = new Cat();
 
             string name = IsAnimalType(cat);
             Console.WriteLine(name);        // Cat 출력
