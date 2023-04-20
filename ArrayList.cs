@@ -1,25 +1,35 @@
 using System;
 using System.Collections;
 
-namespace ConsoleApp8
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        // ArrayList는 List와 달리 여러 가지 자료형을 넣을 수 있다.
+        // 단점은 느리다!
+        ArrayList al = new ArrayList();
+
+        // 요소 추가
+        al.Add("apple");
+        al.Add("banana");
+        al.Add("orange");
+
+        // 요소 삽입
+        al.Insert(1, "grape");
+
+        // 요소 삭제
+        al.Remove("banana");
+
+        // 전체 요소 출력
+        foreach (var element in al)
         {
-            // ArrayList는 List와 달리 여러 가지 자료형을 넣을 수 있다.
-            // 단점은 느리다!
-            ArrayList al = new ArrayList();
-
-            al.Add(1);
-            al.Add("Hello");
-            al.Add(3.3);
-            al.Add(true);
-
-            foreach (var item in al)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine(element);
         }
+
+        // 요소 개수 출력
+        Console.WriteLine("요소 개수: " + al.Count);
+
+        // 모든 요소 삭제
+        al.Clear();
     }
 }
