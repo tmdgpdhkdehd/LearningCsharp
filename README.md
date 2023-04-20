@@ -1,2 +1,1 @@
-# LearningCsharp   
-program1 - int, char, array, operator
+# C# 공부 정리
