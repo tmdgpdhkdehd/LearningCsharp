@@ -1,0 +1,52 @@
+using System;
+using System.Data;
+
+class Program
+{
+    static void Main()
+    {
+        // 데이터테이블 생성
+        DataTable dataTable = new DataTable("SampleTable");
+        dataTable.Columns.Add("ID", typeof(int));
+        dataTable.Columns Add("Name", typeof(string));
+
+        // 행 추가 (Added 상태)
+        DataRow newRow = dataTable.NewRow();
+        newRow["ID"] = 1;
+        newRow["Name"] = "Alice";
+        dataTable.Rows.Add(newRow);
+
+        // 행 수정 (Modified 상태)
+        DataRow existingRow = dataTable.Rows[0];
+        existingRow["Name"] = "Bob";
+
+        // 행 삭제 (Deleted 상태)
+        existingRow.Delete();
+
+        Console.WriteLine("RowState of newRow: " + newRow.RowState); // Added
+        Console.WriteLine("RowState of existingRow: " + existingRow.RowState); // Deleted
+
+        // 변경된 내용을 가져오기
+        DataTable changes = dataTable.GetChanges();
+
+        // 변경된 내용이 있을 경우 출력
+        if (changes != null)
+        {
+            Console.WriteLine("Changes in the DataTable:");
+            foreach (DataRow row in changes.Rows)
+            {
+                Console.WriteLine("RowState: " + row.RowState);
+                Console.WriteLine("ID: " + row["ID"]);
+                Console.WriteLine("Name: " + row["Name"]);
+            }
+        }
+        // 변경된 내용이 없을 경우 출력
+        else
+        {
+            Console.WriteLine("No changes in the DataTable.");
+        }
+
+        // 확정하면 Unchanged 상태가 됨
+        dataTable.AcceptChanges();
+    }
+}
